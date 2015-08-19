@@ -13,8 +13,6 @@ void ModbusCompress(Modbusp Modp)
     case 3: MBSAChk(Modp);break;
     case 4: Modp->Stage += 1;break;
     case 5: MBQChk(Modp);break;
-//    case 6: MBBChk(Modp);break;
-//    case 7: MBRecv(Modp);break;
     case 8: Modp->Stage += 1;break;
     case 9: MBCCRC(Modp);break;
     }
@@ -115,16 +113,7 @@ void MBBChk(Modbusp Modp)
     Modp->BCount = *(Modp->Buff + BContB);
     Modp->Stage = 7;   
 }
-        
-/*void MBRecv(Modbusp Modp) 
-{
-    Modp->Count += 1;
-    if(Modp->Count >= (Modp->BCount))
-    {
-        Modp->Stage = 8;
-    }
-}*/
-       
+
 void MBCCRC(Modbusp Modp)
 {
     u16 RecCRC = GetRecCRC(Modp);
